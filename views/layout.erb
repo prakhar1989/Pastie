@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>//Pastie</title> 
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <style>
+    body {
+      background: #45313b;
+      font-family: 'inconsolata', 'courier new', monospace;
+      color: #f4cf86;
+      font-size: 14px;
+      line-height: 18px;
+      width: 940px;
+      height: 100%;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    #banner {
+      background: #35322d;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      padding: 5px 10px;
+    }
+
+    textarea {
+      margin-top: 35px;
+      margin-left: 50px;
+      background: transparent;
+      resize: none;
+      outline: none;
+      width: 940px;
+      border: 0px;
+      min-height: 500px;
+      padding-left: 40px;
+      color: #f4cf86;
+      height: 100%;
+    }
+
+    #linenos{
+      position: absolute;
+      top: 44px;
+      left: 70px;
+    }
+
+    a {
+      text-decoration: underline;
+      font-weight: 800;
+      color: #f4cf86;
+    }
+
+    #banner a{
+      text-decoration:none;
+     }
+
+     .snippet {
+       margin-left: 40px;
+     }
+        /*
+
+    Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+
+    */
+
+    pre code {
+      display: block; padding: 0.5em;
+    }
+
+    pre .comment,
+    pre .template_comment,
+    pre .diff .header,
+    pre .doctype,
+    pre .lisp .string,
+    pre .javadoc {
+      color: #586e75;
+      font-style: italic;
+    }
+
+    pre .keyword,
+    pre .css .rule .keyword,
+    pre .winutils,
+    pre .javascript .title,
+    pre .method,
+    pre .addition,
+    pre .css .tag,
+    pre .lisp .title {
+      color: #859900;
+    }
+
+    pre .number,
+    pre .command,
+    pre .string,
+    pre .tag .value,
+    pre .phpdoc,
+    pre .tex .formula,
+    pre .regexp,
+    pre .hexcolor {
+      color: #2aa198;
+    }
+
+    pre .title,
+    pre .localvars,
+    pre .function .title,
+    pre .chunk,
+    pre .decorator,
+    pre .builtin,
+    pre .built_in,
+    pre .lisp .title,
+    pre .identifier,
+    pre .title .keymethods,
+    pre .id,
+    pre .header {
+      color: #268bd2;
+    }
+
+    pre .tag .title,
+    pre .rules .property,
+    pre .django .tag .keyword {
+      font-weight: bold;
+    }
+
+    pre .attribute,
+    pre .variable,
+    pre .instancevar,
+    pre .lisp .body,
+    pre .smalltalk .number,
+    pre .constant,
+    pre .class .title,
+    pre .parent,
+    pre .haskell .label {
+      color: #b58900;
+    }
+
+    pre .preprocessor,
+    pre .pi,
+    pre .shebang,
+    pre .symbol,
+    pre .diff .change,
+    pre .special,
+    pre .keymethods,
+    pre .attr_selector,
+    pre .important,
+    pre .subst,
+    pre .cdata {
+      color: #cb4b16;
+    }
+
+    pre .deletion {
+      color: #dc322f;
+    }
+
+    pre .tex .formula,
+    pre .code {
+      background: #073642;
+    }
+
+    #about {
+      position: absolute;
+      top:0px;
+      left: 100px;
+      z-index: 1000;
+      width: 400px;
+      background: #35322d;
+      padding: 10px 30px;
+      display: none;
+      cursor: pointer;
+    }
+
+    input[type=submit]{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="about">
+    <p>Pastie was born in the wee hours of the night when I was trying to learn how 
+    to use Sinatra and DataMapper to make simple apps. You can use it to save snippets of 
+    code to share it with others. As an added bonus: it adds beautiful syntax
+    coloring to it as well. Just paste your fugly code and press Ctrl-s to save.
+    You can see the code on github here:</p>
+  </div>
+  <div id="banner">
+    <a href="/"><h1>//<i>PASTIE</i></h1></a>
+    <small>Press Ctrl+s to save | <a href="#" id="about_link">about</a></small>
+  </div>
+  <%= yield %>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.hotkeys.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#main').focus();
+
+    $('#about_link').bind('click', function(){
+      $('#about').slideDown();
+    });
+    
+    $('#about').bind('click', function(){
+      $(this).slideUp();
+    });
+
+    $(window).keypress(function(event) {
+      if (!(event.which == 115 && event.ctrlKey) && !(event.which == 19)) return true;
+      $('form').submit();
+      event.preventDefault();
+      return false;
+    });
+
+  });
+
+</script>
+</body>
+</html>

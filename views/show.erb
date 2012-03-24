@@ -1,0 +1,11 @@
+<div class="snippet">
+  <pre class="sbody" id="content"><%= @snippet.formatted_body2 %></pre>
+  <div class="sdate">Created on <%= @snippet.created_at.strftime("%B %d, %Y at %I:%M %p") %></div>
+  <br/><a href="/">New Paste!</a>
+</div> 
+<script>
+  var clip = new ZeroClipboard.Client();
+  url = "http://localhost:4567/<%= params[:id] %>"
+  clip.setText(url);
+  clip.glue( 'd_clip_button' );
+</script>
